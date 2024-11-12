@@ -2,108 +2,111 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-11-01T23:30:20-04:00</lastmod>
+    <loc>https://hhhhjjjtt.github.io/</loc>
+    <lastmod>2024-11-12T14:44:04-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/"
+                href="https://hhhhjjjtt.github.io/zh-cn/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="https://hhhhjjjtt.github.io/"
                 />
   </url><url>
-    <loc>http://localhost:1313/p/display-video-on-88-led-screen-using-opencv--arduino/</loc>
-    <lastmod>2024-11-01T23:30:20-04:00</lastmod>
+    <loc>https://hhhhjjjtt.github.io/p/implementing-forward-propagation-in-c/</loc>
+    <lastmod>2024-11-12T14:44:04-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-11-01T23:30:20-04:00</lastmod>
+    <loc>https://hhhhjjjtt.github.io/post/</loc>
+    <lastmod>2024-11-12T14:44:04-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/post/"
+                href="https://hhhhjjjtt.github.io/zh-cn/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/post/"
+                href="https://hhhhjjjtt.github.io/post/"
                 />
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/display-video-on-88-led-screen-using-opencv--arduino/</loc>
+    <lastmod>2024-11-01T23:30:20-04:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/about/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/%E5%85%B3%E4%BA%8E/"
+                href="https://hhhhjjjtt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/about/"
+                href="https://hhhhjjjtt.github.io/about/"
                 />
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://hhhhjjjtt.github.io/page/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/page/"
+                href="https://hhhhjjjtt.github.io/zh-cn/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/page/"
+                href="https://hhhhjjjtt.github.io/page/"
                 />
   </url><url>
-    <loc>http://localhost:1313/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9D%A1%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9D%A1%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2024-10-25T13:57:25-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/my-first-blog/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/my-first-blog/</loc>
     <lastmod>2024-10-21T23:49:54-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://hhhhjjjtt.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/categories/"
+                href="https://hhhhjjjtt.github.io/zh-cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="https://hhhhjjjtt.github.io/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/links/</loc>
+    <loc>https://hhhhjjjtt.github.io/links/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://hhhhjjjtt.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/"
+                href="https://hhhhjjjtt.github.io/zh-cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/tags/"
+                href="https://hhhhjjjtt.github.io/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/categories/test/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/test/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/categories/test/"
+                href="https://hhhhjjjtt.github.io/zh-cn/categories/test/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/test/"
+                href="https://hhhhjjjtt.github.io/categories/test/"
                 />
   </url>
 </urlset>
