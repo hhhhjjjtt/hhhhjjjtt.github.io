@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Fpga on Jefferson&#39;s Blog</title>
+        <link>http://localhost:1313/tags/fpga/</link>
+        <description>Recent content in Fpga on Jefferson&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>Jefferson</copyright>
+        <lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/fpga/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>UART module</title>
+        <link>http://localhost:1313/p/blog_2025_10_07/</link>
+        <pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/blog_2025_10_07/</guid>
+        <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h3&gt;</description>
+        </item>
+        <item>
+        <title>Deploying CNN in a PYNQ-Z2 board</title>
+        <link>http://localhost:1313/p/blog_2025_10_01/</link>
+        <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/blog_2025_10_01/</guid>
+        <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h3&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

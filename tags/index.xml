@@ -6,6 +6,55 @@
         <description>Recent content in Tags on Jefferson&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>Jefferson</copyright><atom:link href="https://hhhhjjjtt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>Jefferson</copyright>
+        <lastBuildDate>Tue, 12 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>C</title>
+        <link>https://hhhhjjjtt.github.io/tags/c/</link>
+        <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/c/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Embedded</title>
+        <link>https://hhhhjjjtt.github.io/tags/embedded/</link>
+        <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/embedded/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Neural Network</title>
+        <link>https://hhhhjjjtt.github.io/tags/neural-network/</link>
+        <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/neural-network/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Arduino</title>
+        <link>https://hhhhjjjtt.github.io/tags/arduino/</link>
+        <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/arduino/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>OpenCV</title>
+        <link>https://hhhhjjjtt.github.io/tags/opencv/</link>
+        <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/opencv/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>https://hhhhjjjtt.github.io/tags/test/</link>
+        <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/test/</guid>
+        <description></description>
+        </item>
+        
     </channel>
 </rss>
