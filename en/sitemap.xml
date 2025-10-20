@@ -15,6 +15,9 @@
                 href="https://hhhhjjjtt.github.io/"
                 />
   </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/fpga/</loc>
+    <lastmod>2025-10-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://hhhhjjjtt.github.io/post/</loc>
     <lastmod>2025-10-07T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -28,20 +31,8 @@
                 href="https://hhhhjjjtt.github.io/post/"
                 />
   </url><url>
-    <loc>https://hhhhjjjtt.github.io/tags/c/</loc>
-    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hhhhjjjtt.github.io/tags/embedded/</loc>
-    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</loc>
-    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hhhhjjjtt.github.io/tags/neural-network/</loc>
-    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://hhhhjjjtt.github.io/tags/</loc>
-    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -52,6 +43,33 @@
                 hreflang="en"
                 href="https://hhhhjjjtt.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2025_10_07/</loc>
+    <lastmod>2025-10-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/verilog/</loc>
+    <lastmod>2025-10-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/cnn/</loc>
+    <lastmod>2025-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</loc>
+    <lastmod>2025-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/embedded/</loc>
+    <lastmod>2025-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/high-level-synthesis/</loc>
+    <lastmod>2025-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/c/</loc>
+    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</loc>
+    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/tags/neural-network/</loc>
+    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hhhhjjjtt.github.io/about/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
