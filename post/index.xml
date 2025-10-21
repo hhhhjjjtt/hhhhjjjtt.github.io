@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on Jefferson&#39;s Blog</title>
+        <title>Posts on Junting&#39;s Blog</title>
         <link>https://hhhhjjjtt.github.io/post/</link>
-        <description>Recent content in Posts on Jefferson&#39;s Blog</description>
+        <description>Recent content in Posts on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>Jefferson</copyright>
-        <lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>Junting Huo</copyright>
+        <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Three-Stage Pipelined RISC-V Processor</title>
+        <link>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</link>
+        <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</guid>
+        <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h3&gt;</description>
+        </item>
+        <item>
         <title>UART module</title>
         <link>https://hhhhjjjtt.github.io/p/blog_2025_10_07/</link>
         <pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on Jefferson&#39;s Blog</title>
+        <title>Tags on Junting&#39;s Blog</title>
         <link>https://hhhhjjjtt.github.io/tags/</link>
-        <description>Recent content in Tags on Jefferson&#39;s Blog</description>
+        <description>Recent content in Tags on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>Jefferson</copyright>
-        <lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Fpga</title>
+        <copyright>Junting Huo</copyright>
+        <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>FPGA</title>
         <link>https://hhhhjjjtt.github.io/tags/fpga/</link>
-        <pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/tags/fpga/</guid>
         <description></description>
@@ -18,7 +18,7 @@
         <item>
         <title>Verilog</title>
         <link>https://hhhhjjjtt.github.io/tags/verilog/</link>
-        <pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/tags/verilog/</guid>
         <description></description>
@@ -48,19 +48,19 @@
         <description></description>
         </item>
         <item>
+        <title>Neural Network</title>
+        <link>https://hhhhjjjtt.github.io/tags/neural-network/</link>
+        <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/tags/neural-network/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>C</title>
         <link>https://hhhhjjjtt.github.io/tags/c/</link>
         <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/tags/c/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Neural Network</title>
-        <link>https://hhhhjjjtt.github.io/tags/neural-network/</link>
-        <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://hhhhjjjtt.github.io/tags/neural-network/</guid>
         <description></description>
         </item>
         <item>

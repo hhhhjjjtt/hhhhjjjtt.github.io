@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\r">
-<title>Deploying CNN in a PYNQ-Z2 board</title>
+<title>Three-Stage Pipelined RISC-V Processor</title>
 
-<link rel='canonical' href='http://localhost:1313/p/blog_2025_10_20/'>
+<link rel='canonical' href='https://hhhhjjjtt.github.io/p/blog_2025_10_20/'>
 
-<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Deploying CNN in a PYNQ-Z2 board">
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Three-Stage Pipelined RISC-V Processor">
 <meta property='og:description' content="Introduction\r">
-<meta property='og:url' content='http://localhost:1313/p/blog_2025_10_20/'>
-<meta property='og:site_name' content='Jefferson&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Embedded' /><meta property='article:tag' content='fpga' /><meta property='article:tag' content='CNN' /><meta property='article:tag' content='High Level Synthesis' /><meta property='article:published_time' content='2025-10-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-20T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Deploying CNN in a PYNQ-Z2 board">
+<meta property='og:url' content='https://hhhhjjjtt.github.io/p/blog_2025_10_20/'>
+<meta property='og:site_name' content='Junting&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Verilog' /><meta property='article:tag' content='FPGA' /><meta property='article:published_time' content='2025-10-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-20T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Three-Stage Pipelined RISC-V Processor">
 <meta name="twitter:description" content="Introduction\r">
     </head>
     <body class="
@@ -56,20 +56,20 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1021643165177278377.png" width="300"
+                        <img src="/img/avatar_hu13959675521436181010.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">😗</span>
+                    <span class="emoji">😋</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Jefferson&#39;s Blog</a></h1>
+            <h1 class="site-name"><a href="/">Junting&#39;s Blog</a></h1>
             <h2 class="site-description">Writing is nothing more than a guided dream.</h2>
         </div>
     </header><ol class="menu-social">
@@ -96,20 +96,14 @@
             
                 <li>
                     <a 
-                        href='https://twitter.com'
+                        href='https://www.linkedin.com/in/junting-huo-27a99a300/'
                         target="_blank"
-                        title="Twitter"
+                        title="LinkedIn"
                         rel="me"
                     >
                         
                         
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
-</svg>
-
-
-
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                         
                     </a>
                 </li>
@@ -139,7 +133,7 @@
         
         
         <li >
-            <a href='/about/' >
+            <a href='/junting-huo/' >
                 
                 
                 
@@ -152,7 +146,7 @@
 
 
                 
-                <span>About</span>
+                <span>Junting Huo</span>
             </a>
         </li>
         
@@ -216,29 +210,6 @@
         
         <li class="menu-bottom-section">
             <ol class="menu">
-                    
-                        <li id="i18n-switch">  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
-                                
-                                    <option value="http://localhost:1313/" selected>English</option>
-                                
-                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
-                                
-                            </select>
-                        </li>
-                    
-                
 
                 
                     <li id="dark-mode-toggle">
@@ -309,10 +280,18 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/fpga/" style="background-color: #7cc561ff; color: #fff;">
+                FPGA
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/blog_2025_10_20/">Deploying CNN in a PYNQ-Z2 board</a>
+            <a href="/p/blog_2025_10_20/">Three-Stage Pipelined RISC-V Processor</a>
         </h2>
     
         
@@ -373,13 +352,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/embedded/">Embedded</a>
+            <a href="/tags/verilog/">Verilog</a>
         
-            <a href="/tags/fpga/">Fpga</a>
-        
-            <a href="/tags/cnn/">CNN</a>
-        
-            <a href="/tags/high-level-synthesis/">High Level Synthesis</a>
+            <a href="/tags/fpga/">FPGA</a>
         
     </section>
 
@@ -405,6 +380,41 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/blog_2025_10_07/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">UART module</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/blog_2025_10_01/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deploying CNN in a PYNQ-Z2 board</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -459,7 +469,7 @@
         
             2024 - 
         
-        2025 Jefferson
+        2025 Junting Huo
     </section>
     
     <section class="powerby">
@@ -553,7 +563,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.db7c45511e0199e3461347dd3de7d5b53d1b8e45a7708035cb1150501e4fbaaf.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

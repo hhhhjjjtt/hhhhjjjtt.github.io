@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Test on Jefferson&#39;s Blog</title>
+        <title>Test on Junting&#39;s Blog</title>
         <link>https://hhhhjjjtt.github.io/categories/test/</link>
-        <description>Recent content in Test on Jefferson&#39;s Blog</description>
+        <description>Recent content in Test on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>Jefferson</copyright><atom:link href="https://hhhhjjjtt.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>Junting Huo</copyright>
+        <lastBuildDate>Mon, 21 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>My First Blog</title>
+        <link>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</link>
+        <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</guid>
+        <description>&lt;h3 id=&#34;hello&#34;&gt;Hello
+&lt;/h3&gt;&lt;p&gt;I&amp;rsquo;m Jefferson, this is my first blog.&lt;/p&gt;
+&lt;!-- &gt; 反抗王政的罪魁，敢行称乱的克伦威尔呀！
+&gt;
+&gt; 私行割据的草寇，抗粮拒税的华盛顿呀！
+&gt;
+&gt; 图谋恢复的顽民，死有余辜的黎塞尔呀！
+&gt;
+&gt; 西北南东去来今，
+&gt;
+&gt; 一切政治革命的匪徒们呀！
+&gt;
+&gt; 万岁！万岁！万岁！ --&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>
