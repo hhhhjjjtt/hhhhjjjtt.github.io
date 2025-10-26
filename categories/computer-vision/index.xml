@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Computer Vision on Junting&#39;s Blog</title>
-        <link>https://hhhhjjjtt.github.io/categories/computer-vision/</link>
+        <link>http://localhost:1313/categories/computer-vision/</link>
         <description>Recent content in Computer Vision on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Junting Huo</copyright>
-        <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Display Video on 8*8 LED screen using OpenCV &#43; Arduino</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2024_11_01/</link>
+        <link>http://localhost:1313/p/blog_2024_11_01/</link>
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2024_11_01/</guid>
+        <guid>http://localhost:1313/p/blog_2024_11_01/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;&lt;p&gt;In this mini project, we will be using OpenCV as for our image processing, then sned the processed image through uart communication to an Arduino UNO R3 board to be displayed on an max7219 8 x 8 LED display. I&amp;rsquo;ve posted the project repo &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt/OpenCV-with-LED-display&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
