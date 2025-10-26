@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Test on Junting&#39;s Blog</title>
-        <link>http://localhost:1313/categories/test/</link>
+        <link>https://hhhhjjjtt.github.io/categories/test/</link>
         <description>Recent content in Test on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Junting Huo</copyright>
-        <lastBuildDate>Mon, 21 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 21 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>My First Blog</title>
-        <link>http://localhost:1313/p/blog_2024_10_21/</link>
+        <link>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</link>
         <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/blog_2024_10_21/</guid>
+        <guid>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</guid>
         <description>&lt;h3 id=&#34;hello&#34;&gt;Hello
 &lt;/h3&gt;&lt;p&gt;I&amp;rsquo;m Jefferson, this is my first blog.&lt;/p&gt;
 &lt;!-- &gt; 反抗王政的罪魁，敢行称乱的克伦威尔呀！

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Junting&#39;s Blog</title>
-        <link>http://localhost:1313/page/</link>
+        <link>https://hhhhjjjtt.github.io/page/</link>
         <description>Recent content in Pages on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Junting Huo</copyright>
-        <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Junting Huo</title>
-        <link>http://localhost:1313/junting-huo/</link>
+        <link>https://hhhhjjjtt.github.io/junting-huo/</link>
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/junting-huo/</guid>
+        <guid>https://hhhhjjjtt.github.io/junting-huo/</guid>
         <description>&lt;p&gt;Hi there!&lt;/p&gt;
 &lt;p&gt;I am currently a third-year undergraduate student studying in University of Virginia (UVA), pursuing a degree in Computer Engineering (CpE). My interest lie in &lt;strong&gt;FPGA design&lt;/strong&gt;, &lt;strong&gt;digital ICs&lt;/strong&gt;, &lt;strong&gt;embedded systems&lt;/strong&gt;, and &lt;strong&gt;AI hardware&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;You can learn more about my work on my &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -21,27 +21,27 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>http://localhost:1313/archives/</link>
+        <link>https://hhhhjjjtt.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/archives/</guid>
+        <guid>https://hhhhjjjtt.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>http://localhost:1313/links/</link>
+        <link>https://hhhhjjjtt.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/links/</guid>
+        <guid>https://hhhhjjjtt.github.io/links/</guid>
         <description>&lt;p&gt;🏗️ under work&amp;hellip;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Search</title>
-        <link>http://localhost:1313/search/</link>
+        <link>https://hhhhjjjtt.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/search/</guid>
+        <guid>https://hhhhjjjtt.github.io/search/</guid>
         <description></description>
         </item>
         
