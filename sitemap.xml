@@ -2,146 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://hhhhjjjtt.github.io/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/fpga/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/fpga/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/fpga/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/fpga/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://hhhhjjjtt.github.io/post/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/blog_2025_10_20/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/verilog/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/verilog/</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/blog_2025_10_07/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2025_10_07/</loc>
     <lastmod>2025-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cnn/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/cnn/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/blog_2025_10_01/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/embedded/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/embedded/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/high-level-synthesis/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/high-level-synthesis/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ml/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/ml/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/c/</loc>
     <lastmod>2024-11-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/blog_2024_11_12/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</loc>
     <lastmod>2024-11-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/neural-network/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/neural-network/</loc>
     <lastmod>2024-11-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/arduino/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/arduino/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/computer-vision/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/computer-vision/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/blog_2024_11_01/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2024_11_01/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/junting-huo/</loc>
+    <loc>https://hhhhjjjtt.github.io/junting-huo/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/opencv/</loc>
+    <loc>https://hhhhjjjtt.github.io/tags/opencv/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://hhhhjjjtt.github.io/page/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/test/</loc>
-    <lastmod>2024-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/test/</loc>
-    <lastmod>2024-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/blog_2024_10_25/</loc>
-    <lastmod>2024-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/blog_2024_10_21/</loc>
+    <loc>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</loc>
     <lastmod>2024-10-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/index.zh-cn/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://hhhhjjjtt.github.io/tags/test/</loc>
+    <lastmod>2024-10-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://hhhhjjjtt.github.io/categories/test/</loc>
+    <lastmod>2024-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hhhhjjjtt.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/css/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://hhhhjjjtt.github.io/links/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/html/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://hhhhjjjtt.github.io/categories/ml/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/markdown/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/markdown-syntax/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/syntax/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/themes/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/themes/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/privacy/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/rich-content/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/shortcodes/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/placeholder-text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/tag-with-whitespaces/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/test-with-whitespaces/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/math-typesetting/</loc>
-    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/emoji/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/emoji-support/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/links/</loc>
-  </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://hhhhjjjtt.github.io/search/</loc>
   </url>
 </urlset>

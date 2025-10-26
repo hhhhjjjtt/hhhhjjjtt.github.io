@@ -2,161 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on Junting&#39;s Blog</title>
-        <link>http://localhost:1313/tags/</link>
+        <link>https://hhhhjjjtt.github.io/tags/</link>
         <description>Recent content in Tags on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Junting Huo</copyright>
-        <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>FPGA</title>
-        <link>http://localhost:1313/tags/fpga/</link>
+        <link>https://hhhhjjjtt.github.io/tags/fpga/</link>
         <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/fpga/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/fpga/</guid>
         <description></description>
         </item>
         <item>
         <title>Verilog</title>
-        <link>http://localhost:1313/tags/verilog/</link>
+        <link>https://hhhhjjjtt.github.io/tags/verilog/</link>
         <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/verilog/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/verilog/</guid>
         <description></description>
         </item>
         <item>
         <title>CNN</title>
-        <link>http://localhost:1313/tags/cnn/</link>
+        <link>https://hhhhjjjtt.github.io/tags/cnn/</link>
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/cnn/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/cnn/</guid>
         <description></description>
         </item>
         <item>
         <title>Embedded</title>
-        <link>http://localhost:1313/tags/embedded/</link>
+        <link>https://hhhhjjjtt.github.io/tags/embedded/</link>
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/embedded/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/embedded/</guid>
         <description></description>
         </item>
         <item>
         <title>High Level Synthesis</title>
-        <link>http://localhost:1313/tags/high-level-synthesis/</link>
+        <link>https://hhhhjjjtt.github.io/tags/high-level-synthesis/</link>
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/high-level-synthesis/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/high-level-synthesis/</guid>
         <description></description>
         </item>
         <item>
         <title>ML</title>
-        <link>http://localhost:1313/tags/ml/</link>
+        <link>https://hhhhjjjtt.github.io/tags/ml/</link>
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/ml/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/ml/</guid>
         <description></description>
         </item>
         <item>
         <title>C</title>
-        <link>http://localhost:1313/tags/c/</link>
+        <link>https://hhhhjjjtt.github.io/tags/c/</link>
         <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/c/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/c/</guid>
         <description></description>
         </item>
         <item>
         <title>Arduino</title>
-        <link>http://localhost:1313/tags/arduino/</link>
+        <link>https://hhhhjjjtt.github.io/tags/arduino/</link>
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/arduino/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/arduino/</guid>
         <description></description>
         </item>
         <item>
         <title>OpenCV</title>
-        <link>http://localhost:1313/tags/opencv/</link>
+        <link>https://hhhhjjjtt.github.io/tags/opencv/</link>
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/opencv/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/opencv/</guid>
         <description></description>
         </item>
         <item>
         <title>Test</title>
-        <link>http://localhost:1313/tags/test/</link>
-        <pubDate>Fri, 25 Oct 2024 00:00:00 +0000</pubDate>
+        <link>https://hhhhjjjtt.github.io/tags/test/</link>
+        <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/test/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Css</title>
-        <link>http://localhost:1313/tags/css/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/css/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Html</title>
-        <link>http://localhost:1313/tags/html/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/html/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Markdown</title>
-        <link>http://localhost:1313/tags/markdown/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/markdown/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Themes</title>
-        <link>http://localhost:1313/tags/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/themes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Privacy</title>
-        <link>http://localhost:1313/tags/privacy/</link>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/privacy/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Shortcodes</title>
-        <link>http://localhost:1313/tags/shortcodes/</link>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/shortcodes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Tag With Whitespaces</title>
-        <link>http://localhost:1313/tags/tag-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/tag-with-whitespaces/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Text</title>
-        <link>http://localhost:1313/tags/text/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/text/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Emoji</title>
-        <link>http://localhost:1313/tags/emoji/</link>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/tags/emoji/</guid>
+        <guid>https://hhhhjjjtt.github.io/tags/test/</guid>
         <description></description>
         </item>
         

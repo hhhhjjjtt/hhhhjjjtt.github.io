@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>ML on Junting&#39;s Blog</title>
-        <link>http://localhost:1313/tags/ml/</link>
+        <link>https://hhhhjjjtt.github.io/tags/ml/</link>
         <description>Recent content in ML on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Junting Huo</copyright>
-        <lastBuildDate>Wed, 01 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ml/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/tags/ml/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Deploying CNN in a PYNQ-Z2 board</title>
-        <link>http://localhost:1313/p/blog_2025_10_01/</link>
+        <link>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</link>
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/blog_2025_10_01/</guid>
+        <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;</description>
         </item>
         <item>
         <title>Implementing Forward propagation in C</title>
-        <link>http://localhost:1313/p/blog_2024_11_12/</link>
+        <link>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</link>
         <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/blog_2024_11_12/</guid>
+        <guid>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;&lt;p&gt;This mini project aims to implement the forward propagation algorithm of Neural Network in C. This is kind of like re-inventing the wheel, but I found it helpful in helping me learn about C and algorithms in ML.&lt;/p&gt;
 &lt;h3 id=&#34;a-mininal-matrix-library&#34;&gt;A Mininal Matrix Library
