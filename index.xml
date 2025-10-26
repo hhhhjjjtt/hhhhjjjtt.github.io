@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Junting&#39;s Blog</title>
-        <link>https://hhhhjjjtt.github.io/</link>
+        <link>http://localhost:1313/</link>
         <description>Recent content on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Junting Huo</copyright>
-        <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Three-Stage Pipelined RISC-V Processor</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</link>
+        <link>http://localhost:1313/p/blog_2025_10_20/</link>
         <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</guid>
+        <guid>http://localhost:1313/p/blog_2025_10_20/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;</description>
         </item>
         <item>
         <title>UART module</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2025_10_07/</link>
+        <link>http://localhost:1313/p/blog_2025_10_07/</link>
         <pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_07/</guid>
+        <guid>http://localhost:1313/p/blog_2025_10_07/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;</description>
         </item>
         <item>
         <title>Deploying CNN in a PYNQ-Z2 board</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</link>
+        <link>http://localhost:1313/p/blog_2025_10_01/</link>
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</guid>
+        <guid>http://localhost:1313/p/blog_2025_10_01/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;</description>
         </item>
         <item>
         <title>Implementing Forward propagation in C</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</link>
+        <link>http://localhost:1313/p/blog_2024_11_12/</link>
         <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2024_11_12/</guid>
+        <guid>http://localhost:1313/p/blog_2024_11_12/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;&lt;p&gt;This mini project aims to implement the forward propagation algorithm of Neural Network in C. This is kind of like re-inventing the wheel, but I found it helpful in helping me learn about C and algorithms in ML.&lt;/p&gt;
 &lt;h3 id=&#34;a-mininal-matrix-library&#34;&gt;A Mininal Matrix Library
@@ -115,10 +115,10 @@
         </item>
         <item>
         <title>Display Video on 8*8 LED screen using OpenCV &#43; Arduino</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2024_11_01/</link>
+        <link>http://localhost:1313/p/blog_2024_11_01/</link>
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2024_11_01/</guid>
+        <guid>http://localhost:1313/p/blog_2024_11_01/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h3&gt;&lt;p&gt;In this mini project, we will be using OpenCV as for our image processing, then sned the processed image through uart communication to an Arduino UNO R3 board to be displayed on an max7219 8 x 8 LED display. I&amp;rsquo;ve posted the project repo &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt/OpenCV-with-LED-display&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
@@ -430,10 +430,10 @@
         </item>
         <item>
         <title>Junting Huo</title>
-        <link>https://hhhhjjjtt.github.io/junting-huo/</link>
+        <link>http://localhost:1313/junting-huo/</link>
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/junting-huo/</guid>
+        <guid>http://localhost:1313/junting-huo/</guid>
         <description>&lt;p&gt;Hi there!&lt;/p&gt;
 &lt;p&gt;I am currently a third-year undergraduate student studying in University of Virginia (UVA), pursuing a degree in Computer Engineering (CpE). My interest lie in &lt;strong&gt;FPGA design&lt;/strong&gt;, &lt;strong&gt;digital ICs&lt;/strong&gt;, &lt;strong&gt;embedded systems&lt;/strong&gt;, and &lt;strong&gt;AI hardware&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;You can learn more about my work on my &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -442,10 +442,10 @@
         </item>
         <item>
         <title>My First Blog</title>
-        <link>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</link>
+        <link>http://localhost:1313/p/blog_2024_10_21/</link>
         <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/p/blog_2024_10_21/</guid>
+        <guid>http://localhost:1313/p/blog_2024_10_21/</guid>
         <description>&lt;h3 id=&#34;hello&#34;&gt;Hello
 &lt;/h3&gt;&lt;p&gt;I&amp;rsquo;m Jefferson, this is my first blog.&lt;/p&gt;
 &lt;!-- &gt; 反抗王政的罪魁，敢行称乱的克伦威尔呀！
@@ -463,27 +463,27 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>https://hhhhjjjtt.github.io/archives/</link>
+        <link>http://localhost:1313/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/archives/</guid>
+        <guid>http://localhost:1313/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>https://hhhhjjjtt.github.io/links/</link>
+        <link>http://localhost:1313/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/links/</guid>
+        <guid>http://localhost:1313/links/</guid>
         <description>&lt;p&gt;🏗️ under work&amp;hellip;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Search</title>
-        <link>https://hhhhjjjtt.github.io/search/</link>
+        <link>http://localhost:1313/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://hhhhjjjtt.github.io/search/</guid>
+        <guid>http://localhost:1313/search/</guid>
         <description></description>
         </item>
         

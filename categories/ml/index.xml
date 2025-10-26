@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>ML on Junting&#39;s Blog</title>
-        <link>https://hhhhjjjtt.github.io/categories/ml/</link>
+        <link>http://localhost:1313/categories/ml/</link>
         <description>Recent content in ML on Junting&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>Junting Huo</copyright><atom:link href="https://hhhhjjjtt.github.io/categories/ml/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>Junting Huo</copyright><atom:link href="http://localhost:1313/categories/ml/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>
