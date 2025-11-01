@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\rOver the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.\nI already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.\nSo, I&rsquo;ve decided to build one on myself.\nI researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.\n">
-<title>Building a Minimal RV32I CPU: Part 1-Focus</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\rOver the summer, I started teaching myself FPGA stuff.\nHonestly, at first I barely knew what an FPGA was or why people used it. Two friends were into it, so I thought: why not try something new and see where it goes? I bought a PYNQ-Z2 board and just started poking around. Blink an LED, drive some pins, write tiny Verilog&hellip; all are some basic things to get a feel.\n">
+<title>Building a Minimal RV32I CPU: Part 1</title>
 
 <link rel='canonical' href='https://hhhhjjjtt.github.io/p/blog_2025_10_20/'>
 
-<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Building a Minimal RV32I CPU: Part 1-Focus">
-<meta property='og:description' content="Introduction\rOver the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.\nI already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.\nSo, I&rsquo;ve decided to build one on myself.\nI researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.\n">
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Building a Minimal RV32I CPU: Part 1">
+<meta property='og:description' content="Introduction\rOver the summer, I started teaching myself FPGA stuff.\nHonestly, at first I barely knew what an FPGA was or why people used it. Two friends were into it, so I thought: why not try something new and see where it goes? I bought a PYNQ-Z2 board and just started poking around. Blink an LED, drive some pins, write tiny Verilog&hellip; all are some basic things to get a feel.\n">
 <meta property='og:url' content='https://hhhhjjjtt.github.io/p/blog_2025_10_20/'>
 <meta property='og:site_name' content='Junting&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Verilog' /><meta property='article:tag' content='FPGA' /><meta property='article:published_time' content='2025-10-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-20T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Building a Minimal RV32I CPU: Part 1-Focus">
-<meta name="twitter:description" content="Introduction\rOver the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.\nI already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.\nSo, I&rsquo;ve decided to build one on myself.\nI researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Verilog' /><meta property='article:tag' content='FPGA' /><meta property='article:published_time' content='2025-10-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://hhhhjjjtt.github.io/p/blog_2025_10_20/img/pipeline.png' />
+<meta name="twitter:title" content="Building a Minimal RV32I CPU: Part 1">
+<meta name="twitter:description" content="Introduction\rOver the summer, I started teaching myself FPGA stuff.\nHonestly, at first I barely knew what an FPGA was or why people used it. Two friends were into it, so I thought: why not try something new and see where it goes? I bought a PYNQ-Z2 board and just started poking around. Blink an LED, drive some pins, write tiny Verilog&hellip; all are some basic things to get a feel.\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://hhhhjjjtt.github.io/p/blog_2025_10_20/img/pipeline.png' />
     </head>
     <body class="
     article-page
@@ -259,16 +260,27 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#overview">Overview</a>
       <ol>
-        <li><a href="#introduction">Introduction</a></li>
         <li><a href="#risc-v-and-rv32i">RISC-V and RV32I</a></li>
         <li><a href="#what-this-project-is-and-isnt">What this project is (and isn’t)</a></li>
         <li><a href="#archetecture-overview">Archetecture Overview</a></li>
         <li><a href="#source-file-overview">Source File Overview</a></li>
-        <li><a href="#hazard-policy">Hazard Policy</a></li>
       </ol>
     </li>
+    <li><a href="#data-hazard">Data Hazard</a>
+      <ol>
+        <li><a href="#hazard-types">Hazard Types</a>
+          <ol>
+            <li><a href="#data-hazards">Data Hazards</a></li>
+            <li><a href="#control-hazards">Control Hazards</a></li>
+          </ol>
+        </li>
+        <li><a href="#hazard-policies">Hazard Policies</a></li>
+      </ol>
+    </li>
+    <li><a href="#running-the-cpu">Running the CPU</a></li>
   </ol>
 </nav>
         </div>
@@ -280,8 +292,20 @@
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/blog_2025_10_20/">
+                <img src="/p/blog_2025_10_20/img/pipeline_hu4007076208577307620.png"
+                        srcset="/p/blog_2025_10_20/img/pipeline_hu4007076208577307620.png 800w, /p/blog_2025_10_20/img/pipeline_hu7679690343661417767.png 1600w"
+                        width="800" 
+                        height="480" 
+                        loading="lazy"
+                        alt="Featured image of post Building a Minimal RV32I CPU: Part 1" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -296,7 +320,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/blog_2025_10_20/">Building a Minimal RV32I CPU: Part 1-Focus</a>
+            <a href="/p/blog_2025_10_20/">Building a Minimal RV32I CPU: Part 1</a>
         </h2>
     
         
@@ -333,7 +357,7 @@
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    6 minute read
                 </time>
             </div>
         
@@ -348,43 +372,28 @@
     <section class="article-content">
     
     
-    <h3 id="introduction">Introduction
-</h3><p>Over the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.</p>
-<p>I already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.</p>
-<p>So, I&rsquo;ve decided to build one on myself.</p>
-<p>I researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.</p>
-<p>The three main references of my design is as such:</p>
+    <h2 id="introduction">Introduction
+</h2><p>Over the summer, I started teaching myself FPGA stuff.</p>
+<p>Honestly, at first I barely knew what an FPGA was or why people used it. Two friends were into it, so I thought: why not try something new and see where it goes? I bought a PYNQ-Z2 board and just started poking around. Blink an LED, drive some pins, write tiny Verilog&hellip; all are some basic things to get a feel.</p>
+<p>Luckily, that random decision actually helped me land my first internship in chip testing in lab. Most days I were either writting and debugging SystemVerilog testbenches, or building on some Python drivers for a function generator. Nothing fancy, but it was really helpful in forcing me to read real waveforms, plan about timing, and kind of think in a way &ldquo;hardware programming&rdquo; does. From there, I started to see a clearer and bigger picture about the IC world.</p>
+<p>By the end of the summer I was more comfortable with Verilog, so I wanted to build on a project that felt “real,” not just a demo. A CPU sounded scary in a good way: it is big enough for me to spend days and night on studying it, but also small enough for me to really finish it without abandoning. Also, I’d seen single-cycle and pipelined CPUs in Computer System and Organization class, and I built a tiny 8-bit CPU for my Digital Logic Design class, but those felt either too theoretical or too toy-like. I wanted to build something that&rsquo;s a few steps closer to the real world.</p>
+<p>So I decided on <strong>RISC-V, 32-bit Base Integer Instruction Set (RV32I)</strong>. RISC-V is open source, with clean instructions, and a lot of examples to learn from. I spend a little time reading docs, lecture notes, and hobby cores, and from these readings I began to plan what my own core&rsquo;s gonna look like. And finally, inspired by the project <code>tinyriscv</code>, I decided to build an in-order, 3-stage pipelined RV32I core with synchronous ROM/RAM, branch resolution in EX, and simple hazard handling (load-use stall, taken-branch flush).</p>
+<p>&mdash;-I&rsquo;ll explain what these means later, just in case.</p>
+<p>A few references helped a lot:</p>
 <ul>
-<li>
-<p><code>tinyriscv</code>: <a class="link" href="https://github.com/liangkangnan/tinyriscv"  target="_blank" rel="noopener"
-    >https://github.com/liangkangnan/tinyriscv</a></p>
-<ul>
-<li>main design idea come from here, where I used the same three stage pipeline structure as he did.</li>
+<li><strong>tinyriscv</strong>: provided a reference for how 3-stage pipeline works.<br>
+<a class="link" href="https://github.com/liangkangnan/tinyriscv"  target="_blank" rel="noopener"
+    >https://github.com/liangkangnan/tinyriscv</a></li>
+<li><strong>OPENMIPS</strong> (from <em>Write a CPU Yourself</em>): 5 stage pipeline in MIPS with good modular structure, clear hold/flush patterns<br>
+<a class="link" href="https://github.com/yufeiran/OpenMIPS"  target="_blank" rel="noopener"
+    >https://github.com/yufeiran/OpenMIPS</a></li>
+<li><strong>NJUCS 2023 DLCO</strong> official course website: useful datapath and lab guidance<br>
+<a class="link" href="https://nju-projectn.github.io/dlco-lecture-note/exp/11.html"  target="_blank" rel="noopener"
+    >https://nju-projectn.github.io/dlco-lecture-note/exp/11.html</a></li>
 </ul>
-</li>
-<li>
-<p><code>OPENMIPS</code>: from the book <em>write a CPU yourself</em> <a class="link" href="https://github.com/yufeiran/OpenMIPS"  target="_blank" rel="noopener"
-    >https://github.com/yufeiran/OpenMIPS</a></p>
-</li>
-<li>
-<p><code>NJUCS 2023 Digital Logic and Computer Organization</code> Course Project: <a class="link" href="https://nju-projectn.github.io/dlco-lecture-note/exp/11.html"  target="_blank" rel="noopener"
-    >https://nju-projectn.github.io/dlco-lecture-note/exp/11.html</a></p>
-</li>
-</ul>
-<p>I finally settled on a 3‑stage design:</p>
-<ul>
-<li>
-<p>IF: fetch from instruction ROM, manage the PC</p>
-</li>
-<li>
-<p>ID: decode, read registers, build immediates, package a control bundle</p>
-</li>
-<li>
-<p>EX+MEM+WB: execute ALU ops, do data RAM reads/writes, and commit results</p>
-</li>
-</ul>
-<p>I made instruction rom and data ram both syncronous read, and data hazard mainly solved by pipeline holding and pipeline flushing.</p>
-<h3 id="risc-v-and-rv32i">RISC-V and RV32I
+<p>So that’s the story of why I’m doing this and how I got here. The rest on the post will give a short overview of the core.</p>
+<h2 id="overview">Overview
+</h2><h3 id="risc-v-and-rv32i">RISC-V and RV32I
 </h3><p>Just a little background: RISC‑V is an open instruction set architecture (ISA). It’s modular: you start with a base ISA and add extensions.</p>
 <p>RISC-V have many subsets, and among them, RV32I is the 32‑bit base integer ISA—no mul/div, no atomics, no floating‑point.</p>
 <p>A few fast facts about RV32I:</p>
@@ -404,16 +413,123 @@
 </h3><p><strong>Goal</strong>: a minimal, well‑commented, 3‑stage pipelined RV32I core in Verilog that runs hand‑assembled tests and demonstrates robust hazard handling.</p>
 <p><strong>Not a goal (yet)</strong>: exceptions/CSRs, caches, or branch prediction. This core I make is mainly a learning core.</p>
 <h3 id="archetecture-overview">Archetecture Overview
-</h3><h3 id="source-file-overview">Source File Overview
-</h3><p><code>defines.v</code>: defines Macros like buses, opcodes, funct3/7, the 16‑bit control encoding, etc.</p>
+</h3><p><img src="/p/blog_2025_10_20/img/pipeline.png"
+	width="945"
+	height="567"
+	srcset="/p/blog_2025_10_20/img/pipeline_hu8062557098718859902.png 480w, /p/blog_2025_10_20/img/pipeline_hu1139563656461871673.png 1024w"
+	loading="lazy"
+	
+		alt="my-riscv Pipeline"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<p>Key choices:</p>
+<ul>
+<li>
+<p>Synchronous ROM/RAM: addresses are presented in cycle N; data becomes visible in cycle N+1. This strongly shapes IF/ID timing.</p>
+</li>
+<li>
+<p>Control bundle from <strong>ID</strong> to <strong>EX</strong>: a 16‑bit bus from <strong>ID</strong> to <strong>EX</strong> stage that passes neccesarry decoded control information about ALU operation, branch control, and memory operation. Looks like this:</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{ REG_we, SRC_A, SRC_B[1:0], ALU[3:0], BRANCH[2:0], MemToReg, MEM_we, MEM_op[2:0] }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>Branches resolved in EX: taken branches flush the wrong‑path instructions early, and redirect the PC address to the branch destination.</p>
+</li>
+<li>
+<p>Load‑use stall: upon a load operation, pipeline will be hold for one beat to let the read from data ram complete;
+writeback occurs on the next beat.</p>
+</li>
+</ul>
+<h3 id="source-file-overview">Source File Overview
+</h3><p><code>defines.v</code>: Defines Macros like buses, opcodes, funct3/7, the 16‑bit control encoding, etc.</p>
 <p><code>pc.v</code>: PC pointer. Have three behaviors: jump, hold, or +4.</p>
-<p><code>inst_rom.v</code>/ <code>data_ram.v</code>: syncronous read and write; memories with addr[31:2] drop (enforces word alignment).</p>
+<ul>
+<li>Sequential logic</li>
+</ul>
+<p><code>inst_rom.v</code>: Instruction rom. Able to do syncronous read and write; memories with addr[31:2] drop (enforces word alignment).</p>
+<ul>
+<li>Sequential logic</li>
+</ul>
+<p><code>data_ram.v</code>: Data ram. Able to do syncronous read and write; memories with addr[31:2] drop (enforces word alignment).</p>
+<ul>
+<li>Sequential logic</li>
+</ul>
 <p><code>regs.v</code>: 32×32 regfile, synchronous write, combinational reads with simple WB‑bypass.</p>
-<p><code>id.v</code>: decoder builds immediates (I/S/B/U/J), selects ALU ops, sets branch class, memory width/sign, and MemToReg.</p>
-<p><code>id_ex.v</code> / <code>if_id.v</code>: pipeline latches with flush and hold behavior.</p>
-<p><code>ex.v</code>: ALU + branch target/decision + data‑width packing/unpacking for loads/stores + extra load/WB two‑beat register + hazard control</p>
+<ul>
+<li>Combinational logic</li>
+</ul>
+<p><code>id.v</code>: Decoder builds immediates (I/S/B/U/J), selects ALU ops, sets branch class, memory width/sign, and MemToReg.</p>
+<ul>
+<li>Combinational logic</li>
+</ul>
+<p><code>if_id.v</code>: Pipeline latch between <strong>if</strong> and <strong>id</strong>. Flush and hold behavior is controlled by <code>hold_ctrl.v</code>. Instruction Rom is integrated inside of <code>if_id.v</code> instead of placing along with <code>pc.v</code> before <code>if_id.v</code> it to prevent an extra clock cycle in <strong>id</strong> stage.</p>
+<ul>
+<li>Sequential logic</li>
+</ul>
+<p><code>id_ex.v</code>: Pipeline latch between <strong>id</strong> and <strong>ex</strong>. Flush and hold behavior is controlled by <code>hold_ctrl.v</code>.</p>
+<ul>
+<li>Sequential logic</li>
+</ul>
+<p><code>ex.v</code>: handles the ALU; branch target/decision; data‑width packing/unpacking for loads/stores; extra load/WB two‑beat register; hazard control</p>
+<ul>
+<li>Mainly combinational logic, but with a sequential logic load register that stores the load instruction (destination register address/write enable/write width/write source) during load operation</li>
+</ul>
 <p><code>hold_ctrl.v</code>: translates EX’s {load_busy, branch_en} into the specific hold/flush flags for each stage.</p>
-<h3 id="hazard-policy">Hazard Policy
+<ul>
+<li>Combinational logic</li>
+</ul>
+<h2 id="data-hazard">Data Hazard
+</h2><p>A <strong>hazard</strong> is anything that makes the pipeline do the wrong thing if we just keep marching forward one instruction per cycle. Hazards show up because instructions overlap in time.</p>
+<h3 id="hazard-types">Hazard Types
+</h3><h4 id="data-hazards">Data Hazards
+</h4><ul>
+<li><strong>RAW (Read After Write)</strong>: An instruction needs a value that a previous instruction hasn’t produced yet.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-s" data-lang="s"><span class="line"><span class="cl"><span class="n">lw</span> <span class="n">x3</span><span class="p">,</span> <span class="m">0</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="c1"># produces x3, but the data only arrives next cycle</span>
+</span></span><span class="line"><span class="cl"><span class="n">add</span> <span class="n">x4</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x5</span> <span class="c1"># needs x3 immediately</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><strong>WAR (Write After Read)</strong>: a later instruction writes a register that an earlier instruction still needs to read. In an in‑order, single‑issue pipeline like mine, WAR doesn’t occur (reads happen before later writes reach WB).</p>
+</li>
+<li>
+<p><strong>WAW (Write After Write)</strong>: two instructions write the same register; the older must “win.” Also avoided in in‑order, single‑issue pipelines because writes retire in program order.</p>
+</li>
+</ul>
+<h4 id="control-hazards">Control Hazards
+</h4><p>Branches and jumps disrupt the fetch stream because we don’t know the correct next PC until EX resolves the condition/target.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-s" data-lang="s"><span class="line"><span class="cl"><span class="n">beq</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">target</span> <span class="c1"># if taken, the instruction already fetched after this is wrong</span>
+</span></span><span class="line"><span class="cl"><span class="n">add</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">x5</span> <span class="c1"># wrong‑path</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="hazard-policies">Hazard Policies
 </h3><ul>
 <li><strong>Branch</strong>: handled in EX stage
 <ul>
@@ -433,6 +549,10 @@
 </ul>
 </li>
 </ul>
+<h2 id="running-the-cpu">Running the CPU
+</h2><p>🏗️ under work&hellip;</p>
+<p>Go to my github repo: <a class="link" href="https://github.com/hhhhjjjtt/my-riscv"  target="_blank" rel="noopener"
+    >https://github.com/hhhhjjjtt/my-riscv</a>, follow the instruction there to build and run.</p>
 
 </section>
 

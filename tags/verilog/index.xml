@@ -8,48 +8,33 @@
         <language>en</language>
         <copyright>Junting Huo</copyright>
         <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/tags/verilog/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Building a Minimal RV32I CPU: Part 1-Focus</title>
+        <title>Building a Minimal RV32I CPU: Part 1</title>
         <link>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</link>
         <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</guid>
-        <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
-&lt;/h3&gt;&lt;p&gt;Over the summer, I&amp;rsquo;ve spend time trying to teach myself about how a cpu is constructed.&lt;/p&gt;
-&lt;p&gt;I already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&amp;hellip;) have the complexity of a cpu.&lt;/p&gt;
-&lt;p&gt;So, I&amp;rsquo;ve decided to build one on myself.&lt;/p&gt;
-&lt;p&gt;I researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.&lt;/p&gt;
-&lt;p&gt;The three main references of my design is as such:&lt;/p&gt;
+        <description>&lt;img src="https://hhhhjjjtt.github.io/p/blog_2025_10_20/img/pipeline.png" alt="Featured image of post Building a Minimal RV32I CPU: Part 1" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h2&gt;&lt;p&gt;Over the summer, I started teaching myself FPGA stuff.&lt;/p&gt;
+&lt;p&gt;Honestly, at first I barely knew what an FPGA was or why people used it. Two friends were into it, so I thought: why not try something new and see where it goes? I bought a PYNQ-Z2 board and just started poking around. Blink an LED, drive some pins, write tiny Verilog&amp;hellip; all are some basic things to get a feel.&lt;/p&gt;
+&lt;p&gt;Luckily, that random decision actually helped me land my first internship in chip testing in lab. Most days I were either writting and debugging SystemVerilog testbenches, or building on some Python drivers for a function generator. Nothing fancy, but it was really helpful in forcing me to read real waveforms, plan about timing, and kind of think in a way &amp;ldquo;hardware programming&amp;rdquo; does. From there, I started to see a clearer and bigger picture about the IC world.&lt;/p&gt;
+&lt;p&gt;By the end of the summer I was more comfortable with Verilog, so I wanted to build on a project that felt “real,” not just a demo. A CPU sounded scary in a good way: it is big enough for me to spend days and night on studying it, but also small enough for me to really finish it without abandoning. Also, I’d seen single-cycle and pipelined CPUs in Computer System and Organization class, and I built a tiny 8-bit CPU for my Digital Logic Design class, but those felt either too theoretical or too toy-like. I wanted to build something that&amp;rsquo;s a few steps closer to the real world.&lt;/p&gt;
+&lt;p&gt;So I decided on &lt;strong&gt;RISC-V, 32-bit Base Integer Instruction Set (RV32I)&lt;/strong&gt;. RISC-V is open source, with clean instructions, and a lot of examples to learn from. I spend a little time reading docs, lecture notes, and hobby cores, and from these readings I began to plan what my own core&amp;rsquo;s gonna look like. And finally, inspired by the project &lt;code&gt;tinyriscv&lt;/code&gt;, I decided to build an in-order, 3-stage pipelined RV32I core with synchronous ROM/RAM, branch resolution in EX, and simple hazard handling (load-use stall, taken-branch flush).&lt;/p&gt;
+&lt;p&gt;&amp;mdash;-I&amp;rsquo;ll explain what these means later, just in case.&lt;/p&gt;
+&lt;p&gt;A few references helped a lot:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;tinyriscv&lt;/code&gt;: &lt;a class=&#34;link&#34; href=&#34;https://github.com/liangkangnan/tinyriscv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/liangkangnan/tinyriscv&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;main design idea come from here, where I used the same three stage pipeline structure as he did.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tinyriscv&lt;/strong&gt;: provided a reference for how 3-stage pipeline works.&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/liangkangnan/tinyriscv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/liangkangnan/tinyriscv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OPENMIPS&lt;/strong&gt; (from &lt;em&gt;Write a CPU Yourself&lt;/em&gt;): 5 stage pipeline in MIPS with good modular structure, clear hold/flush patterns&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/yufeiran/OpenMIPS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/yufeiran/OpenMIPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NJUCS 2023 DLCO&lt;/strong&gt; official course website: useful datapath and lab guidance&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://nju-projectn.github.io/dlco-lecture-note/exp/11.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nju-projectn.github.io/dlco-lecture-note/exp/11.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;OPENMIPS&lt;/code&gt;: from the book &lt;em&gt;write a CPU yourself&lt;/em&gt; &lt;a class=&#34;link&#34; href=&#34;https://github.com/yufeiran/OpenMIPS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/yufeiran/OpenMIPS&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;NJUCS 2023 Digital Logic and Computer Organization&lt;/code&gt; Course Project: &lt;a class=&#34;link&#34; href=&#34;https://nju-projectn.github.io/dlco-lecture-note/exp/11.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://nju-projectn.github.io/dlco-lecture-note/exp/11.html&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I finally settled on a 3‑stage design:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;IF: fetch from instruction ROM, manage the PC&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ID: decode, read registers, build immediates, package a control bundle&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;EX+MEM+WB: execute ALU ops, do data RAM reads/writes, and commit results&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I made instruction rom and data ram both syncronous read, and data hazard mainly solved by pipeline holding and pipeline flushing.&lt;/p&gt;
-&lt;h3 id=&#34;risc-v-and-rv32i&#34;&gt;RISC-V and RV32I
+&lt;p&gt;So that’s the story of why I’m doing this and how I got here. The rest on the post will give a short overview of the core.&lt;/p&gt;
+&lt;h2 id=&#34;overview&#34;&gt;Overview
+&lt;/h2&gt;&lt;h3 id=&#34;risc-v-and-rv32i&#34;&gt;RISC-V and RV32I
 &lt;/h3&gt;&lt;p&gt;Just a little background: RISC‑V is an open instruction set architecture (ISA). It’s modular: you start with a base ISA and add extensions.&lt;/p&gt;
 &lt;p&gt;RISC-V have many subsets, and among them, RV32I is the 32‑bit base integer ISA—no mul/div, no atomics, no floating‑point.&lt;/p&gt;
 &lt;p&gt;A few fast facts about RV32I:&lt;/p&gt;
@@ -69,16 +54,123 @@
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Goal&lt;/strong&gt;: a minimal, well‑commented, 3‑stage pipelined RV32I core in Verilog that runs hand‑assembled tests and demonstrates robust hazard handling.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Not a goal (yet)&lt;/strong&gt;: exceptions/CSRs, caches, or branch prediction. This core I make is mainly a learning core.&lt;/p&gt;
 &lt;h3 id=&#34;archetecture-overview&#34;&gt;Archetecture Overview
-&lt;/h3&gt;&lt;h3 id=&#34;source-file-overview&#34;&gt;Source File Overview
-&lt;/h3&gt;&lt;p&gt;&lt;code&gt;defines.v&lt;/code&gt;: defines Macros like buses, opcodes, funct3/7, the 16‑bit control encoding, etc.&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://hhhhjjjtt.github.io/p/blog_2025_10_20/img/pipeline.png&#34;
+	width=&#34;945&#34;
+	height=&#34;567&#34;
+	srcset=&#34;https://hhhhjjjtt.github.io/p/blog_2025_10_20/img/pipeline_hu8062557098718859902.png 480w, https://hhhhjjjtt.github.io/p/blog_2025_10_20/img/pipeline_hu1139563656461871673.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;my-riscv Pipeline&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Key choices:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Synchronous ROM/RAM: addresses are presented in cycle N; data becomes visible in cycle N+1. This strongly shapes IF/ID timing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Control bundle from &lt;strong&gt;ID&lt;/strong&gt; to &lt;strong&gt;EX&lt;/strong&gt;: a 16‑bit bus from &lt;strong&gt;ID&lt;/strong&gt; to &lt;strong&gt;EX&lt;/strong&gt; stage that passes neccesarry decoded control information about ALU operation, branch control, and memory operation. Looks like this:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{ REG_we, SRC_A, SRC_B[1:0], ALU[3:0], BRANCH[2:0], MemToReg, MEM_we, MEM_op[2:0] }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Branches resolved in EX: taken branches flush the wrong‑path instructions early, and redirect the PC address to the branch destination.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Load‑use stall: upon a load operation, pipeline will be hold for one beat to let the read from data ram complete;
+writeback occurs on the next beat.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;source-file-overview&#34;&gt;Source File Overview
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;defines.v&lt;/code&gt;: Defines Macros like buses, opcodes, funct3/7, the 16‑bit control encoding, etc.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pc.v&lt;/code&gt;: PC pointer. Have three behaviors: jump, hold, or +4.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;inst_rom.v&lt;/code&gt;/ &lt;code&gt;data_ram.v&lt;/code&gt;: syncronous read and write; memories with addr[31:2] drop (enforces word alignment).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sequential logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;inst_rom.v&lt;/code&gt;: Instruction rom. Able to do syncronous read and write; memories with addr[31:2] drop (enforces word alignment).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sequential logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;data_ram.v&lt;/code&gt;: Data ram. Able to do syncronous read and write; memories with addr[31:2] drop (enforces word alignment).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sequential logic&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;regs.v&lt;/code&gt;: 32×32 regfile, synchronous write, combinational reads with simple WB‑bypass.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;id.v&lt;/code&gt;: decoder builds immediates (I/S/B/U/J), selects ALU ops, sets branch class, memory width/sign, and MemToReg.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;id_ex.v&lt;/code&gt; / &lt;code&gt;if_id.v&lt;/code&gt;: pipeline latches with flush and hold behavior.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ex.v&lt;/code&gt;: ALU + branch target/decision + data‑width packing/unpacking for loads/stores + extra load/WB two‑beat register + hazard control&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Combinational logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;id.v&lt;/code&gt;: Decoder builds immediates (I/S/B/U/J), selects ALU ops, sets branch class, memory width/sign, and MemToReg.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Combinational logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;if_id.v&lt;/code&gt;: Pipeline latch between &lt;strong&gt;if&lt;/strong&gt; and &lt;strong&gt;id&lt;/strong&gt;. Flush and hold behavior is controlled by &lt;code&gt;hold_ctrl.v&lt;/code&gt;. Instruction Rom is integrated inside of &lt;code&gt;if_id.v&lt;/code&gt; instead of placing along with &lt;code&gt;pc.v&lt;/code&gt; before &lt;code&gt;if_id.v&lt;/code&gt; it to prevent an extra clock cycle in &lt;strong&gt;id&lt;/strong&gt; stage.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sequential logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;id_ex.v&lt;/code&gt;: Pipeline latch between &lt;strong&gt;id&lt;/strong&gt; and &lt;strong&gt;ex&lt;/strong&gt;. Flush and hold behavior is controlled by &lt;code&gt;hold_ctrl.v&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sequential logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;ex.v&lt;/code&gt;: handles the ALU; branch target/decision; data‑width packing/unpacking for loads/stores; extra load/WB two‑beat register; hazard control&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mainly combinational logic, but with a sequential logic load register that stores the load instruction (destination register address/write enable/write width/write source) during load operation&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;hold_ctrl.v&lt;/code&gt;: translates EX’s {load_busy, branch_en} into the specific hold/flush flags for each stage.&lt;/p&gt;
-&lt;h3 id=&#34;hazard-policy&#34;&gt;Hazard Policy
+&lt;ul&gt;
+&lt;li&gt;Combinational logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;data-hazard&#34;&gt;Data Hazard
+&lt;/h2&gt;&lt;p&gt;A &lt;strong&gt;hazard&lt;/strong&gt; is anything that makes the pipeline do the wrong thing if we just keep marching forward one instruction per cycle. Hazards show up because instructions overlap in time.&lt;/p&gt;
+&lt;h3 id=&#34;hazard-types&#34;&gt;Hazard Types
+&lt;/h3&gt;&lt;h4 id=&#34;data-hazards&#34;&gt;Data Hazards
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RAW (Read After Write)&lt;/strong&gt;: An instruction needs a value that a previous instruction hasn’t produced yet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-s&#34; data-lang=&#34;s&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;lw&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# produces x3, but the data only arrives next cycle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x5&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# needs x3 immediately&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WAR (Write After Read)&lt;/strong&gt;: a later instruction writes a register that an earlier instruction still needs to read. In an in‑order, single‑issue pipeline like mine, WAR doesn’t occur (reads happen before later writes reach WB).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WAW (Write After Write)&lt;/strong&gt;: two instructions write the same register; the older must “win.” Also avoided in in‑order, single‑issue pipelines because writes retire in program order.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;control-hazards&#34;&gt;Control Hazards
+&lt;/h4&gt;&lt;p&gt;Branches and jumps disrupt the fetch stream because we don’t know the correct next PC until EX resolves the condition/target.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-s&#34; data-lang=&#34;s&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;beq&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# if taken, the instruction already fetched after this is wrong&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x5&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# wrong‑path&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;hazard-policies&#34;&gt;Hazard Policies
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Branch&lt;/strong&gt;: handled in EX stage
 &lt;ul&gt;
@@ -98,6 +190,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;running-the-cpu&#34;&gt;Running the CPU
+&lt;/h2&gt;&lt;p&gt;🏗️ under work&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Go to my github repo: &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt/my-riscv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/hhhhjjjtt/my-riscv&lt;/a&gt;, follow the instruction there to build and run.&lt;/p&gt;
 </description>
         </item>
         <item>
