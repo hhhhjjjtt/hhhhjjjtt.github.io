@@ -8,13 +8,97 @@
         <language>en</language>
         <copyright>Junting Huo</copyright>
         <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhhhjjjtt.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Three-Stage Pipelined RISC-V Processor</title>
+        <title>Building a Minimal RV32I CPU: Part 1-Focus</title>
         <link>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</link>
         <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_20/</guid>
         <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
-&lt;/h3&gt;</description>
+&lt;/h3&gt;&lt;p&gt;Over the summer, I&amp;rsquo;ve spend time trying to teach myself about how a cpu is constructed.&lt;/p&gt;
+&lt;p&gt;I already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&amp;hellip;) have the complexity of a cpu.&lt;/p&gt;
+&lt;p&gt;So, I&amp;rsquo;ve decided to build one on myself.&lt;/p&gt;
+&lt;p&gt;I researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.&lt;/p&gt;
+&lt;p&gt;The three main references of my design is as such:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;tinyriscv&lt;/code&gt;: &lt;a class=&#34;link&#34; href=&#34;https://github.com/liangkangnan/tinyriscv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/liangkangnan/tinyriscv&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;main design idea come from here, where I used the same three stage pipeline structure as he did.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;OPENMIPS&lt;/code&gt;: from the book &lt;em&gt;write a CPU yourself&lt;/em&gt; &lt;a class=&#34;link&#34; href=&#34;https://github.com/yufeiran/OpenMIPS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/yufeiran/OpenMIPS&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;NJUCS 2023 Digital Logic and Computer Organization&lt;/code&gt; Course Project: &lt;a class=&#34;link&#34; href=&#34;https://nju-projectn.github.io/dlco-lecture-note/exp/11.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nju-projectn.github.io/dlco-lecture-note/exp/11.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I finally settled on a 3‑stage design:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IF: fetch from instruction ROM, manage the PC&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ID: decode, read registers, build immediates, package a control bundle&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;EX+MEM+WB: execute ALU ops, do data RAM reads/writes, and commit results&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I made instruction rom and data ram both syncronous read, and data hazard mainly solved by pipeline holding and pipeline flushing.&lt;/p&gt;
+&lt;h3 id=&#34;risc-v-and-rv32i&#34;&gt;RISC-V and RV32I
+&lt;/h3&gt;&lt;p&gt;Just a little background: RISC‑V is an open instruction set architecture (ISA). It’s modular: you start with a base ISA and add extensions.&lt;/p&gt;
+&lt;p&gt;RISC-V have many subsets, and among them, RV32I is the 32‑bit base integer ISA—no mul/div, no atomics, no floating‑point.&lt;/p&gt;
+&lt;p&gt;A few fast facts about RV32I:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;32 general‑purpose registers x0..x31; x0 is hard‑wired to 0.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Little‑endian memory, naturally aligned accesses in the base spec.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Six instruction formats: R, I, S, B, U, J (you’ll see these all over my decoder).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That’s enough to build real programs, test hazards, and run small benchmarks.&lt;/p&gt;
+&lt;h3 id=&#34;what-this-project-is-and-isnt&#34;&gt;What this project is (and isn’t)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Goal&lt;/strong&gt;: a minimal, well‑commented, 3‑stage pipelined RV32I core in Verilog that runs hand‑assembled tests and demonstrates robust hazard handling.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Not a goal (yet)&lt;/strong&gt;: exceptions/CSRs, caches, or branch prediction. This core I make is mainly a learning core.&lt;/p&gt;
+&lt;h3 id=&#34;archetecture-overview&#34;&gt;Archetecture Overview
+&lt;/h3&gt;&lt;h3 id=&#34;source-file-overview&#34;&gt;Source File Overview
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;defines.v&lt;/code&gt;: defines Macros like buses, opcodes, funct3/7, the 16‑bit control encoding, etc.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pc.v&lt;/code&gt;: PC pointer. Have three behaviors: jump, hold, or +4.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;inst_rom.v&lt;/code&gt;/ &lt;code&gt;data_ram.v&lt;/code&gt;: syncronous read and write; memories with addr[31:2] drop (enforces word alignment).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;regs.v&lt;/code&gt;: 32×32 regfile, synchronous write, combinational reads with simple WB‑bypass.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;id.v&lt;/code&gt;: decoder builds immediates (I/S/B/U/J), selects ALU ops, sets branch class, memory width/sign, and MemToReg.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;id_ex.v&lt;/code&gt; / &lt;code&gt;if_id.v&lt;/code&gt;: pipeline latches with flush and hold behavior.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ex.v&lt;/code&gt;: ALU + branch target/decision + data‑width packing/unpacking for loads/stores + extra load/WB two‑beat register + hazard control&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hold_ctrl.v&lt;/code&gt;: translates EX’s {load_busy, branch_en} into the specific hold/flush flags for each stage.&lt;/p&gt;
+&lt;h3 id=&#34;hazard-policy&#34;&gt;Hazard Policy
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Branch&lt;/strong&gt;: handled in EX stage
+&lt;ul&gt;
+&lt;li&gt;When there is successful branch detected, &lt;code&gt;ex.v&lt;/code&gt; will send a pipeline flush signal to &lt;code&gt;hold_ctrl.v&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pc.v&lt;/code&gt; will jump to the designated address, while &lt;code&gt;if_id.v&lt;/code&gt; and &lt;code&gt;id_ex.v&lt;/code&gt; will output &lt;code&gt;NOP&lt;/code&gt; to the next stage. Which is equavalent to take a Branch while flushing the two falsely fetched instructions after Branch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load&lt;/strong&gt;: handled in EX stage
+&lt;ul&gt;
+&lt;li&gt;When there is a load detected, &lt;code&gt;ex.v&lt;/code&gt; will send a pipeline hold signal to &lt;code&gt;hold_ctrl.v&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pc.v&lt;/code&gt; and &lt;code&gt;if_id.v&lt;/code&gt; will hold on to its current output value, while &lt;code&gt;id_ex.v&lt;/code&gt; will output &lt;code&gt;NOP&lt;/code&gt;. Which is equavalent to waiting for the data loaded from the data ram to be written to the register files.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Read after Write&lt;/strong&gt;: handled in register file
+&lt;ul&gt;
+&lt;li&gt;Upon read after write, bypass the write value directly to the read.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         <item>
         <title>UART module</title>

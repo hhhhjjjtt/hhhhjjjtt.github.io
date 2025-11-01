@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\r">
-<title>Three-Stage Pipelined RISC-V Processor</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\rOver the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.\nI already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.\nSo, I&rsquo;ve decided to build one on myself.\nI researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.\n">
+<title>Building a Minimal RV32I CPU: Part 1-Focus</title>
 
 <link rel='canonical' href='https://hhhhjjjtt.github.io/p/blog_2025_10_20/'>
 
-<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Three-Stage Pipelined RISC-V Processor">
-<meta property='og:description' content="Introduction\r">
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Building a Minimal RV32I CPU: Part 1-Focus">
+<meta property='og:description' content="Introduction\rOver the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.\nI already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.\nSo, I&rsquo;ve decided to build one on myself.\nI researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.\n">
 <meta property='og:url' content='https://hhhhjjjtt.github.io/p/blog_2025_10_20/'>
 <meta property='og:site_name' content='Junting&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Verilog' /><meta property='article:tag' content='FPGA' /><meta property='article:published_time' content='2025-10-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-20T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Three-Stage Pipelined RISC-V Processor">
-<meta name="twitter:description" content="Introduction\r">
+<meta name="twitter:title" content="Building a Minimal RV32I CPU: Part 1-Focus">
+<meta name="twitter:description" content="Introduction\rOver the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.\nI already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.\nSo, I&rsquo;ve decided to build one on myself.\nI researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.\n">
     </head>
     <body class="
     article-page
@@ -262,6 +262,11 @@
     <li>
       <ol>
         <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#risc-v-and-rv32i">RISC-V and RV32I</a></li>
+        <li><a href="#what-this-project-is-and-isnt">What this project is (and isn’t)</a></li>
+        <li><a href="#archetecture-overview">Archetecture Overview</a></li>
+        <li><a href="#source-file-overview">Source File Overview</a></li>
+        <li><a href="#hazard-policy">Hazard Policy</a></li>
       </ol>
     </li>
   </ol>
@@ -291,7 +296,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/blog_2025_10_20/">Three-Stage Pipelined RISC-V Processor</a>
+            <a href="/p/blog_2025_10_20/">Building a Minimal RV32I CPU: Part 1-Focus</a>
         </h2>
     
         
@@ -328,7 +333,7 @@
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    3 minute read
                 </time>
             </div>
         
@@ -344,7 +349,91 @@
     
     
     <h3 id="introduction">Introduction
-</h3>
+</h3><p>Over the summer, I&rsquo;ve spend time trying to teach myself about how a cpu is constructed.</p>
+<p>I already learned in Computer System and Organization about the machanisms behind both a single cycle and a pipelined cpu. I also have ecperience in building things up using verilog, but none of them (led, spi, uart&hellip;) have the complexity of a cpu.</p>
+<p>So, I&rsquo;ve decided to build one on myself.</p>
+<p>I researched a bunch of RISC‑V docs, class notes, and hobbyist cores, tried a few pipeline sketches.</p>
+<p>The three main references of my design is as such:</p>
+<ul>
+<li>
+<p><code>tinyriscv</code>: <a class="link" href="https://github.com/liangkangnan/tinyriscv"  target="_blank" rel="noopener"
+    >https://github.com/liangkangnan/tinyriscv</a></p>
+<ul>
+<li>main design idea come from here, where I used the same three stage pipeline structure as he did.</li>
+</ul>
+</li>
+<li>
+<p><code>OPENMIPS</code>: from the book <em>write a CPU yourself</em> <a class="link" href="https://github.com/yufeiran/OpenMIPS"  target="_blank" rel="noopener"
+    >https://github.com/yufeiran/OpenMIPS</a></p>
+</li>
+<li>
+<p><code>NJUCS 2023 Digital Logic and Computer Organization</code> Course Project: <a class="link" href="https://nju-projectn.github.io/dlco-lecture-note/exp/11.html"  target="_blank" rel="noopener"
+    >https://nju-projectn.github.io/dlco-lecture-note/exp/11.html</a></p>
+</li>
+</ul>
+<p>I finally settled on a 3‑stage design:</p>
+<ul>
+<li>
+<p>IF: fetch from instruction ROM, manage the PC</p>
+</li>
+<li>
+<p>ID: decode, read registers, build immediates, package a control bundle</p>
+</li>
+<li>
+<p>EX+MEM+WB: execute ALU ops, do data RAM reads/writes, and commit results</p>
+</li>
+</ul>
+<p>I made instruction rom and data ram both syncronous read, and data hazard mainly solved by pipeline holding and pipeline flushing.</p>
+<h3 id="risc-v-and-rv32i">RISC-V and RV32I
+</h3><p>Just a little background: RISC‑V is an open instruction set architecture (ISA). It’s modular: you start with a base ISA and add extensions.</p>
+<p>RISC-V have many subsets, and among them, RV32I is the 32‑bit base integer ISA—no mul/div, no atomics, no floating‑point.</p>
+<p>A few fast facts about RV32I:</p>
+<ul>
+<li>
+<p>32 general‑purpose registers x0..x31; x0 is hard‑wired to 0.</p>
+</li>
+<li>
+<p>Little‑endian memory, naturally aligned accesses in the base spec.</p>
+</li>
+<li>
+<p>Six instruction formats: R, I, S, B, U, J (you’ll see these all over my decoder).</p>
+</li>
+</ul>
+<p>That’s enough to build real programs, test hazards, and run small benchmarks.</p>
+<h3 id="what-this-project-is-and-isnt">What this project is (and isn’t)
+</h3><p><strong>Goal</strong>: a minimal, well‑commented, 3‑stage pipelined RV32I core in Verilog that runs hand‑assembled tests and demonstrates robust hazard handling.</p>
+<p><strong>Not a goal (yet)</strong>: exceptions/CSRs, caches, or branch prediction. This core I make is mainly a learning core.</p>
+<h3 id="archetecture-overview">Archetecture Overview
+</h3><h3 id="source-file-overview">Source File Overview
+</h3><p><code>defines.v</code>: defines Macros like buses, opcodes, funct3/7, the 16‑bit control encoding, etc.</p>
+<p><code>pc.v</code>: PC pointer. Have three behaviors: jump, hold, or +4.</p>
+<p><code>inst_rom.v</code>/ <code>data_ram.v</code>: syncronous read and write; memories with addr[31:2] drop (enforces word alignment).</p>
+<p><code>regs.v</code>: 32×32 regfile, synchronous write, combinational reads with simple WB‑bypass.</p>
+<p><code>id.v</code>: decoder builds immediates (I/S/B/U/J), selects ALU ops, sets branch class, memory width/sign, and MemToReg.</p>
+<p><code>id_ex.v</code> / <code>if_id.v</code>: pipeline latches with flush and hold behavior.</p>
+<p><code>ex.v</code>: ALU + branch target/decision + data‑width packing/unpacking for loads/stores + extra load/WB two‑beat register + hazard control</p>
+<p><code>hold_ctrl.v</code>: translates EX’s {load_busy, branch_en} into the specific hold/flush flags for each stage.</p>
+<h3 id="hazard-policy">Hazard Policy
+</h3><ul>
+<li><strong>Branch</strong>: handled in EX stage
+<ul>
+<li>When there is successful branch detected, <code>ex.v</code> will send a pipeline flush signal to <code>hold_ctrl.v</code>.</li>
+<li><code>pc.v</code> will jump to the designated address, while <code>if_id.v</code> and <code>id_ex.v</code> will output <code>NOP</code> to the next stage. Which is equavalent to take a Branch while flushing the two falsely fetched instructions after Branch.</li>
+</ul>
+</li>
+<li><strong>Load</strong>: handled in EX stage
+<ul>
+<li>When there is a load detected, <code>ex.v</code> will send a pipeline hold signal to <code>hold_ctrl.v</code>.</li>
+<li><code>pc.v</code> and <code>if_id.v</code> will hold on to its current output value, while <code>id_ex.v</code> will output <code>NOP</code>. Which is equavalent to waiting for the data loaded from the data ram to be written to the register files.</li>
+</ul>
+</li>
+<li><strong>Read after Write</strong>: handled in register file
+<ul>
+<li>Upon read after write, bypass the write value directly to the read.</li>
+</ul>
+</li>
+</ul>
+
 </section>
 
 
