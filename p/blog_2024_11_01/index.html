@@ -259,13 +259,9 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#python-setup">Python Setup</a></li>
-        <li><a href="#arduino-setup">Arduino Setup</a></li>
-      </ol>
-    </li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#python-setup">Python Setup</a></li>
+    <li><a href="#arduino-setup">Arduino Setup</a></li>
   </ol>
 </nav>
         </div>
@@ -345,11 +341,11 @@
     <section class="article-content">
     
     
-    <h3 id="introduction">Introduction
-</h3><p>In this mini project, we will be using OpenCV as for our image processing, then sned the processed image through uart communication to an Arduino UNO R3 board to be displayed on an max7219 8 x 8 LED display. I&rsquo;ve posted the project repo <a class="link" href="https://github.com/hhhhjjjtt/OpenCV-with-LED-display"  target="_blank" rel="noopener"
+    <h2 id="introduction">Introduction
+</h2><p>In this mini project, we will be using OpenCV as for our image processing, then sned the processed image through uart communication to an Arduino UNO R3 board to be displayed on an max7219 8 x 8 LED display. I&rsquo;ve posted the project repo <a class="link" href="https://github.com/hhhhjjjtt/OpenCV-with-LED-display"  target="_blank" rel="noopener"
     >here</a></p>
-<h3 id="python-setup">Python Setup
-</h3><p>For the python script, We first want to make sure to import the libraries we need</p>
+<h2 id="python-setup">Python Setup
+</h2><p>For the python script, We first want to make sure to import the libraries we need</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -548,8 +544,8 @@
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="arduino-setup">Arduino Setup
-</h3><p>We will be using the LedControl library found <a class="link" href="https://github.com/wayoda/LedControl"  target="_blank" rel="noopener"
+</div><h2 id="arduino-setup">Arduino Setup
+</h2><p>We will be using the LedControl library found <a class="link" href="https://github.com/wayoda/LedControl"  target="_blank" rel="noopener"
     >here</a>.</p>
 <p>In your Arduino IDE, start a new project.</p>
 <p>First, we need to connect the right pins to the right port. In this case, I choose pin 12 as DataIn, 11 as CLK, 10 as LOAD.</p>

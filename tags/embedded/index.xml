@@ -13,8 +13,8 @@
         <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/p/blog_2025_10_01/</guid>
-        <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
-&lt;/h3&gt;</description>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>Implementing Forward propagation in C</title>
@@ -101,11 +101,11 @@
         <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
         
         <guid>https://hhhhjjjtt.github.io/p/blog_2024_11_01/</guid>
-        <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction
-&lt;/h3&gt;&lt;p&gt;In this mini project, we will be using OpenCV as for our image processing, then sned the processed image through uart communication to an Arduino UNO R3 board to be displayed on an max7219 8 x 8 LED display. I&amp;rsquo;ve posted the project repo &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt/OpenCV-with-LED-display&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h2&gt;&lt;p&gt;In this mini project, we will be using OpenCV as for our image processing, then sned the processed image through uart communication to an Arduino UNO R3 board to be displayed on an max7219 8 x 8 LED display. I&amp;rsquo;ve posted the project repo &lt;a class=&#34;link&#34; href=&#34;https://github.com/hhhhjjjtt/OpenCV-with-LED-display&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;python-setup&#34;&gt;Python Setup
-&lt;/h3&gt;&lt;p&gt;For the python script, We first want to make sure to import the libraries we need&lt;/p&gt;
+&lt;h2 id=&#34;python-setup&#34;&gt;Python Setup
+&lt;/h2&gt;&lt;p&gt;For the python script, We first want to make sure to import the libraries we need&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -304,8 +304,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;cv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroyAllWindows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;arduino-setup&#34;&gt;Arduino Setup
-&lt;/h3&gt;&lt;p&gt;We will be using the LedControl library found &lt;a class=&#34;link&#34; href=&#34;https://github.com/wayoda/LedControl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h2 id=&#34;arduino-setup&#34;&gt;Arduino Setup
+&lt;/h2&gt;&lt;p&gt;We will be using the LedControl library found &lt;a class=&#34;link&#34; href=&#34;https://github.com/wayoda/LedControl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In your Arduino IDE, start a new project.&lt;/p&gt;
 &lt;p&gt;First, we need to connect the right pins to the right port. In this case, I choose pin 12 as DataIn, 11 as CLK, 10 as LOAD.&lt;/p&gt;
